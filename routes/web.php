@@ -15,7 +15,7 @@ Route::get('/', function () {
         : redirect()->route('login');
 })->name('home');
 
-Route::get('/todos', Todos::class);
+Route::get('/todos', Todos::class)->name('todos');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
