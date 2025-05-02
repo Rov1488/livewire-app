@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use App\Livewire\Todos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,9 @@ use Livewire\Volt\Volt;
 /*Route::get('/', function () {
     return view('welcome');
 })->name('home');*/
+
+Route::get('locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
+
 
 Route::get('/', function () {
     return Auth::check()
