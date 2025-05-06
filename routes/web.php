@@ -9,28 +9,34 @@ use Livewire\Volt\Volt;
 /*Route::get('/', function () {
     return view('welcome');
 })->name('home');*/
+Route::get('/language/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
-Route::get('locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
+Route::group([
+    'prefix' => '{locale?}',
+    'where' => ['locale' => '[a-z]{2}'],
+    'middleware' => 'setLocale',
+], function () {
 
+    Route::get('/', function () {
+        return Auth::check()
+            ? redirect()->route('dashboard')
+            : redirect()->route('login');
+    })->name('home');
+    Route::get('/todos', Todos::class)->name('todos');
 
-Route::get('/', function () {
-    return Auth::check()
-        ? redirect()->route('dashboard')
-        : redirect()->route('login');
-})->name('home');
+    Route::view('dashboard', 'dashboard')
+        ->middleware(['auth', 'verified'])
+        ->name('dashboard');
 
-Route::get('/todos', Todos::class)->name('todos');
+    Route::middleware(['auth'])->group(function () {
+        Route::redirect('settings', 'settings/profile');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+        Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
+        Volt::route('settings/password', 'settings.password')->name('settings.password');
+        Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+    });
 
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';

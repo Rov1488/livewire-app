@@ -1,21 +1,39 @@
 <x-layouts.app :title="__('Dashboard')">
+    <x-layouts.app.header></x-layouts.app.header>
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+        <div class="relative h-0.5 flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+            <x-placeholder-pattern class="absolute inset-0 w-full h-full flex-1 stroke-gray-900/20 dark:stroke-neutral-100/20" />
+           {{-- <div class="absolute bg-clip-padding right-1">
+                <select>
+                    <option value="" selected>O'zbek</option>
+                    <option value="">Russion</option>
+                    <option value="">English</option>
+                </select>
+            </div>--}}
+
+            {{__('Bosh sahifa')}}
+        </div>
+
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
                 <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+
             </div>
             <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
                 <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+
             </div>
             <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
                 <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+
             </div>
         </div>
         <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
             <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+
         </div>
 
-        <div data-element="fields" data-stacked="false" class="flex items-center w-full max-w-md mb-3 seva-fields formkit-fields">
+        {{--<div data-element="fields" data-stacked="false" class="flex items-center w-full max-w-md mb-3 seva-fields formkit-fields">
             <div class="relative w-full mr-3 formkit-field">
                 <label for="member_email" class="hidden block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
@@ -34,7 +52,7 @@
                 </div>
                 <span class="px-5 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Subscribe</span>
             </button>
-        </div>
+        </div>--}}
 
     </div>
 </x-layouts.app>
