@@ -16,7 +16,7 @@ class Logout
 
         Session::invalidate();
         Session::regenerateToken();
-
+        //$locale = app()->getLocale();
         return redirect()->route('login');
     }
 }

@@ -16,7 +16,7 @@
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="server-stack" :href="route('todos')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('TODOS') }}</flux:navlist.item>
                     <flux:navlist.item icon="laptop-employee" :href="route('todos')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('TODOS') }}</flux:navlist.item>
-                    
+
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -68,7 +68,7 @@
 
                     <flux:menu.separator />
 
-                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                    <form method="POST" action="{{ route('logout', ['locale' => $currentLocale])}}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
                             {{ __('Log Out') }}
@@ -118,7 +118,7 @@
 
                     <flux:menu.separator />
 
-                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                    <form method="POST" action="{{ route('logout', ['locale' => $currentLocale]) }}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
                             {{ __('Log Out') }}
