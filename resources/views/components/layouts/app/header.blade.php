@@ -100,7 +100,7 @@
         </form>--}}
         <ul class="*:data-flux-field:mb-3 mt-2.5 pb-2 bg-clip-padding">
             @foreach($languages as $lang)
-            <li>
+            <li class="<?php echo ($lang === session()->get('locale')) ? 'text-emerald-500' : '';?>">
                 <a href="{{route('change.locale', ['locale' => $lang])}}">{{$lang}}</a>
             </li>
             @endforeach
