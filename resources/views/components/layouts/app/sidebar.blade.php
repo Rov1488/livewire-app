@@ -7,7 +7,7 @@
         <flux:sidebar sticky stashable class="border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-            <a href="{{ route('dashboard') }}" class="mr-5 flex items-center space-x-2" wire:navigate>
+            <a href="{{ route('dashboard', ['locale' => session()->get('locale')]) }}" class="mr-5 flex items-center space-x-2" wire:navigate>
                 <x-app-logo />
             </a>
 
@@ -68,7 +68,7 @@
 
                     <flux:menu.separator />
 
-                    <form method="POST" action="{{ route('logout', ['locale' => $currentLocale])}}" class="w-full">
+                    <form method="POST" action="{{ route('logout', ['locale' => session()->get('locale')])}}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
                             {{ __('Log Out') }}
@@ -118,7 +118,7 @@
 
                     <flux:menu.separator />
 
-                    <form method="POST" action="{{ route('logout', ['locale' => $currentLocale]) }}" class="w-full">
+                    <form method="POST" action="{{ route('logout', ['locale' => session()->get('locale')]) }}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
                             {{ __('Log Out') }}

@@ -116,7 +116,7 @@
               class="lg:hidden border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
-    <a href="{{ route('dashboard') }}" class="ml-1 flex items-center space-x-2" wire:navigate>
+    <a href="{{ route('dashboard', ['locale' => $lang]) }}" class="ml-1 flex items-center space-x-2" wire:navigate>
         <x-app-logo/>
     </a>
 
